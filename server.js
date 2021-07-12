@@ -10,9 +10,18 @@ app.get("/", (req, res) => {
 });
 // Routing example with new end point
 app.get("/Daisy", (req, res) => {
-    console.log(req);
     res.send("Yay Daisy you served a new response!");
 });
+// Another Routing example with new end point to serve HTML Kali image
+app.get("/kali", (req, res) => {
+    res.sendFile(__dirname + '/kali.html');
+
+});
+// Detect query parameters
+app.get("/", function (req, res) {
+    let searchQuery = req.query.search;
+    res.send("Hello World! You searched for " + searchQuery);
+  });
 // listen for requests and execute callback 
 app.listen(3000, () => {
     console.log("Server is listening on port 3000. Ready to accept requests!");
